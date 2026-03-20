@@ -1,0 +1,45 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F0E6D8"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g filter="url(#blur)">
+    <circle cx="839" cy="315" r="198" fill="#D3A062" fill-opacity="0.34"/>
+    <circle cx="839" cy="315" r="128" fill="#7A8B69" fill-opacity="0.85"/>
+  </g>
+  <path d="M835 194C806 180 772 182 751 206C727 234 724 280 748 308C773 338 821 349 856 329C888 311 907 277 904 243C902 220 888 198 867 186C855 179 844 177 835 194Z" fill="#CB8850"/>
+  <path d="M848 200C875 186 910 192 930 218C954 250 951 300 923 328C896 356 848 365 813 350C777 334 754 299 757 263C760 228 782 199 815 190C828 186 839 187 848 200Z" fill="#6E7A61"/>
+  <path d="M833 167C840 136 866 112 895 101" stroke="#5A3B22" stroke-width="18" stroke-linecap="round"/>
+  <path d="M880 90C911 77 944 81 969 102" stroke="#8C9A74" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="600" cy="315" r="170" fill="url(#memory)"/>
+  <circle cx="600" cy="315" r="118" fill="url(#memoryCore)"/>
+  <text x="90" y="220" fill="#2C2017" font-family="Georgia, 'Times New Roman', serif" font-size="88" letter-spacing="10">
+    NAGORI
+  </text>
+  <text x="92" y="302" fill="#5E4330" font-family="Georgia, 'Times New Roman', serif" font-size="34">
+    longing for the season that was
+  </text>
+  <text x="92" y="390" fill="#5E4330" font-family="Georgia, 'Times New Roman', serif" font-size="28">
+    Hover to revive what is already fading.
+  </text>
+  <defs>
+    <filter id="blur" x="582" y="-4" width="514" height="638" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+    <linearGradient id="bg" x1="600" y1="0" x2="600" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFE6D8"/>
+      <stop offset="0.48" stop-color="#D8C4AE"/>
+      <stop offset="1" stop-color="#7E5532"/>
+    </linearGradient>
+    <radialGradient id="memory" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 315) rotate(90) scale(170)">
+      <stop stop-color="#FFF4E2"/>
+      <stop offset="0.42" stop-color="#F0C998" stop-opacity="0.84"/>
+      <stop offset="1" stop-color="#F0C998" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="memoryCore" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 315) rotate(90) scale(118)">
+      <stop stop-color="#FFF9EF"/>
+      <stop offset="0.34" stop-color="#DDB77E" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#DDB77E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
