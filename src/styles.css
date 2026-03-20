@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #19130f;
+  background: #f4ecdf;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.alive-core {
+  mask-image: radial-gradient(
+    circle var(--reveal-radius) at var(--cursor-x) var(--cursor-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.98) 22%,
+    rgba(0, 0, 0, 0.72) 52%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--reveal-radius) at var(--cursor-x) var(--cursor-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.98) 22%,
+    rgba(0, 0, 0, 0.72) 52%,
+    transparent 100%
+  );
+  transition: opacity 240ms ease;
+}
+
+.alive-halo {
+  filter: blur(20px) saturate(1.08);
+  transform: scale(1.035);
+  mask-image: radial-gradient(
+    circle var(--halo-radius) at var(--cursor-x) var(--cursor-y),
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 38%,
+    rgba(0, 0, 0, 0.22) 64%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--halo-radius) at var(--cursor-x) var(--cursor-y),
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 38%,
+    rgba(0, 0, 0, 0.22) 64%,
+    transparent 100%
+  );
+  transition: opacity 320ms ease;
+}
+
+@media (max-width: 768px) {
+  .alive-halo {
+    filter: blur(16px) saturate(1.04);
+  }
+}
