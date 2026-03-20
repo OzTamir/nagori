@@ -1,5 +1,5 @@
-import type { CSSProperties } from 'react';
-import { useState } from 'react';
+import type { CSSProperties } from "react";
+import { useState } from "react";
 
 type AssetModule = Record<string, string>;
 
@@ -20,19 +20,19 @@ const MIN_RADIUS = 8;
 const MAX_RADIUS = 28;
 const DEFAULT_RADIUS = 14;
 
-const aliveImages = import.meta.glob('../assets/*/alive.png', {
+const aliveImages = import.meta.glob("../assets/*/alive.png", {
   eager: true,
-  import: 'default',
+  import: "default",
 }) as AssetModule;
 
-const deadImages = import.meta.glob('../assets/*/dead.png', {
+const deadImages = import.meta.glob("../assets/*/dead.png", {
   eager: true,
-  import: 'default',
+  import: "default",
 }) as AssetModule;
 
 const scenes = Object.entries(aliveImages)
   .map(([alivePath, aliveSrc]) => {
-    const id = alivePath.split('/').at(-2);
+    const id = alivePath.split("/").at(-2);
     const deadPath = `../assets/${id}/dead.png`;
     const deadSrc = deadImages[deadPath];
 
@@ -42,7 +42,7 @@ const scenes = Object.entries(aliveImages)
 
     return {
       id,
-      title: id.replace(/[-_]/g, ' '),
+      title: id.replace(/[-_]/g, " "),
       aliveSrc,
       deadSrc,
     };
@@ -67,12 +67,12 @@ function App() {
   });
   const [radius, setRadius] = useState(DEFAULT_RADIUS);
   const maskStyle = {
-    '--cursor-x': `${pointer.x}%`,
-    '--cursor-y': `${pointer.y}%`,
-    '--core-opacity': pointer.active ? 1 : 0,
-    '--halo-opacity': pointer.active ? 0.95 : 0,
-    '--reveal-radius': `${radius}rem`,
-    '--halo-radius': `${radius * 1.65}rem`,
+    "--cursor-x": `${pointer.x}%`,
+    "--cursor-y": `${pointer.y}%`,
+    "--core-opacity": pointer.active ? 1 : 0,
+    "--halo-opacity": pointer.active ? 0.95 : 0,
+    "--reveal-radius": `${radius}rem`,
+    "--halo-radius": `${radius * 1.65}rem`,
   } as CSSProperties;
 
   if (!scene) {
@@ -87,27 +87,21 @@ function App() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(244,236,223,0.18),_transparent_38%),linear-gradient(180deg,_#efe6d8_0%,_#d8c4ae_42%,_#7e5532_100%)] px-6 py-8 text-ink sm:px-10 lg:px-16">
-      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-between gap-8">
+      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-between gap-4">
         <header className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-start sm:justify-between">
-          <div className="max-w-xl">
+          <div className="max-w-xl xl:max-w-2xl">
             <p className="font-body text-xs uppercase tracking-[0.4em] text-umber/75">
-              Nagori
+              Nagori (名残り)
             </p>
-            <h1 className="mt-3 font-display text-5xl leading-none sm:text-6xl lg:text-7xl">
+            <h1 className="mt-3 font-display text-5xl leading-snug sm:text-6xl lg:text-7xl">
               Longing for what is already leaving
             </h1>
           </div>
-
-          <p className="max-w-sm font-body text-base leading-relaxed text-ink/75">
-            Move across the surface. What has faded briefly returns, then slips
-            away again at the edge of your touch. Scroll to widen or narrow the
-            reach of memory.
-          </p>
         </header>
 
         <section className="flex flex-1 items-center justify-center">
           <div
-            className="group relative mx-auto w-fit max-w-[95vw] overflow-hidden rounded-[2rem] border border-paper/40 bg-[#2f2218] shadow-plate"
+            className="group relative mx-auto h-[68vh] w-[95vw] overflow-hidden rounded-[2rem] border border-paper/40 bg-[#2f2218] shadow-plate"
             onMouseMove={(event) => {
               const bounds = event.currentTarget.getBoundingClientRect();
               const x = ((event.clientX - bounds.left) / bounds.width) * 100;
@@ -115,14 +109,21 @@ function App() {
 
               setPointer({ x, y, active: true });
             }}
-            onMouseEnter={() => setPointer((current) => ({ ...current, active: true }))}
-            onMouseLeave={() => setPointer((current) => ({ ...current, active: false }))}
+            onMouseEnter={() =>
+              setPointer((current) => ({ ...current, active: true }))
+            }
+            onMouseLeave={() =>
+              setPointer((current) => ({ ...current, active: false }))
+            }
             onWheel={(event) => {
               event.preventDefault();
 
               setRadius((current) => {
                 const next = current + event.deltaY * -0.012;
-                return Math.min(MAX_RADIUS, Math.max(MIN_RADIUS, Number(next.toFixed(2))));
+                return Math.min(
+                  MAX_RADIUS,
+                  Math.max(MIN_RADIUS, Number(next.toFixed(2))),
+                );
               });
             }}
             style={maskStyle}
@@ -132,7 +133,7 @@ function App() {
             <img
               src={scene.deadSrc}
               alt={`${scene.title}, withered`}
-              className="block max-h-[68vh] w-auto max-w-[95vw] object-contain"
+              className="block h-full w-full object-cover"
             />
 
             <img
@@ -150,6 +151,19 @@ function App() {
             />
           </div>
         </section>
+
+        <footer className="flex flex-col">
+          <a
+            href="https:/oztamir.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-right text-white/25 hover:text-white/75 pr-2"
+          >
+            <p className="font-body text-xs text-right">
+              made with care by <strong>Oz</strong>
+            </p>
+          </a>
+        </footer>
       </div>
     </main>
   );
